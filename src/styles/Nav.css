@@ -1,0 +1,16 @@
+header {
+  display: flex;
+}
+
+.logo img {
+  width: 20%;
+}
+
+.ul-nav {
+  display: flex;
+  list-style-type: none;
+}
+
+.link-item {
+  margin-left: 30px;
+}
