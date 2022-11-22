@@ -5,8 +5,12 @@ import NavBar from './pages/Nav';
 import Rockets from './pages/Rockets';
 import Missions from './pages/Missions';
 import Profile from './pages/Profile';
+import { useDispatch } from 'react-redux';
+import { fetchRockets } from './redux/rockets/rockets';
 
 function App() {
+  const dispatch = useDispatch();
+  dispatch(fetchRockets());
   return (
     <div className="App">
 
