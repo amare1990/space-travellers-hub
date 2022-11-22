@@ -1,5 +1,5 @@
 // Constants
-const GET_ROCKET = 'space-travellers-hub/src/redux/rockets/fetchRocket';
+const GET_ROCKET = 'space-travellers-hub/src/redux/rockets/fetchRockets';
 
 const initialState = [];
 // const sN = 0;
@@ -13,9 +13,9 @@ export const fetchRockets = (rockets) => ({
 
 export default function rocketsReducer(state = initialState, action) {
   switch (action.type) {
-    case action.rockets: {
+    case GET_ROCKET: {
       const rocketsArray = [];
-      action.rockets.forEach((rocket) => rocketsArray.push(
+      action.payload.forEach((rocket) => rocketsArray.push(
         {
           flickr_images: rocket.flickr_images,
           description: rocket.description,
