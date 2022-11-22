@@ -1,11 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import retrieveRocket from '../redux/rockets/api/fetchRockets';
 
 const Rockets = () => {
   const rocketsArray = useSelector((state) => state.rockets);
-  /*  const dispatch = useDispatch();
-  dispatch(retrieveRocket()); */
 
   return (
 
