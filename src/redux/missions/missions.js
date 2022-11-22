@@ -7,7 +7,7 @@ const initialState = [];
 // function that returns action
 
 export const fetchMissions = (missions) => ({
-  type: GET_ROCKET,
+  type: GET_MISSION,
   payload: missions,
 });
 

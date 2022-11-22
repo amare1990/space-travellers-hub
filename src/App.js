@@ -7,10 +7,12 @@ import Rockets from './pages/Rockets';
 import Missions from './pages/Missions';
 import Profile from './pages/Profile';
 import { fetchRockets } from './redux/rockets/rockets';
+import retrieveRocket from './redux/rockets/api/fetchRockets';
 
 function App() {
   const dispatch = useDispatch();
   dispatch(fetchRockets());
+  console.log(retrieveRocket());
   return (
     <div className="App">
 
