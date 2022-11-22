@@ -21,6 +21,7 @@ export default function rocketsReducer(state = initialState, action) {
           description: rocket.description,
           rocket_id: rocket.rocket_id,
           rocket_name: rocket.rocket_name,
+          rocket_type: rocket.rocket_type,
         },
       ));
       return [...rocketsArray];

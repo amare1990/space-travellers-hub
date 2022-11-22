@@ -9,6 +9,7 @@ const Rockets = () => {
     <div className="Rockets">
       { rocketsArray.map((rocket) => (
         <li key={rocket}>
+          {rocket.rocket_type}
           {rocket.rocket_name}
           {/* {rocket.description} */}
         </li>
