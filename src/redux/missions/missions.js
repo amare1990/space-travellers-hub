@@ -8,7 +8,7 @@ const initialState = [];
 
 export const fetchMissions = (missions) => ({
   type: GET_MISSION,
-  payload: missions,
+  missions,
 });
 
 export default function missionsReducer(state = initialState, action) {
