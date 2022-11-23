@@ -8,13 +8,15 @@ const Rockets = () => {
 
     <div className="Rockets">
       { rocketsArray.map((rocket) => (
+
         <li key={rocket}>
-          {rocket.rocket_type}
+
           {rocket.rocket_name}
-          {/* {rocket.description} */}
+          <img src={rocket.flickr_images[0]} alt={rocket.rocket_name} />
+
         </li>
+
       ))}
-      <h1>Rockets here</h1>
     </div>
   );
 };
