@@ -15,8 +15,11 @@ const Missions = () => {
 
         <li key={mission.mission_id} className="mission-card">
           {mission.mission_name}
+
         </li>
       ))}
+
+      <h1> Missions</h1>
 
     </div>
   );

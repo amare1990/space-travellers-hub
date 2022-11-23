@@ -13,7 +13,7 @@ export const fetchMissions = (missions) => ({
 
 export default function missionsReducer(state = initialState, action) {
   switch (action.type) {
-    case action.missions: {
+    case GET_MISSION: {
       const missionsArray = [];
       action.missions.forEach((mission) => missionsArray.push(
         {
