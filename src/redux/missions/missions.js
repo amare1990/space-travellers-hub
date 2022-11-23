@@ -1,5 +1,5 @@
 // Constants
-const GET_MISSION = 'space-travellers-hub/src/redux/rockets/fetchMissions';
+const GET_MISSION = 'space-travellers-hub/src/redux/missions/fetchMissions';
 
 const initialState = [];
 // const sN = 0;
@@ -14,16 +14,15 @@ export const fetchMissions = (missions) => ({
 export default function missionsReducer(state = initialState, action) {
   switch (action.type) {
     case action.missions: {
-      const rocketsArray = [];
-      action.rockets.forEach((rocket) => rocketsArray.push(
+      const missionsArray = [];
+      action.missions.forEach((mission) => missionsArray.push(
         {
-          flickr_images: rocket.flickr_images,
-          description: rocket.description,
-          rocket_id: rocket.rocket_id,
-          rocket_name: rocket.rocket_name,
+          mission_id: mission.mission_id,
+          mission_name: mission.mission_name,
+          description: mission.description,
         },
       ));
-      return [...rocketsArray];
+      return [...missionsArray];
     }
 
     default:
