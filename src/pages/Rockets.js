@@ -1,9 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { reserveRocket } from '../redux/rockets/rockets';
 import '../styles/Rocket.css';
 
 const Rockets = () => {
   const rocketsArray = useSelector((state) => state.rockets);
+  const dispatch = useDispatch();
+  // dispatch(reserveRocket());
+
+  const handleReserveRocket = (id) => {
+    dispatch(reserveRocket(id));
+  };
 
   return (
 
@@ -23,14 +30,17 @@ const Rockets = () => {
             <p className="rocket-description">
               {rocket.description}
             </p>
-            <button type="button" className="btn reserve-rocket-btn">
+            <button
+              type="button"
+              className="btn reserve-rocket-btn"
+              onClick={handleReserveRocket(rocket.rocket_id)}
+            >
               Reserve Rocket
             </button>
           </div>
 
         </li>
       ))}
-      <h1>Rockets here</h1>
     </div>
   );
 };
