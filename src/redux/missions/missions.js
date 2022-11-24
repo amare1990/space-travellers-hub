@@ -1,47 +1,64 @@
-// Constants
-const GET_MISSION = 'space-travellers-hub/src/redux/missions/fetchMissions';
-const RESERVE_MISSION = 'space-travellers-hub/src/redux/missions/reserveMission';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+// import axios from 'axios';
 
-const initialState = [];
-// const sN = 0;
+export const fetchMissions = createAsyncThunk(
+  'missions/fetchMissions',
+  async () => {
+    const response = await fetch('https://api.spacexdata.com/v3/missions');
+    const missions = await response.json();
+    return missions;
+  },
+);
 
-// function that returns action
+const missionsSlice = createSlice({
+  name: 'missions',
+  initialState: {
+    missions: [],
+    status: 'idle',
+  },
+  reducers: {
+    reserveMission: (state, action) => ({
+      ...state,
+      missions: state.missions.map((thisMission) => {
+        if (thisMission.mission_id === action.payload) {
+          return {
+            ...thisMission,
+            reserved: true,
+          };
+        }
+        return thisMission;
+      }),
+    }),
+    cancelMission: (state, action) => ({
+      ...state,
+      missions: state.missions.map((thisMission) => {
+        if (thisMission.mission_id === action.payload) {
+          return {
+            ...thisMission,
+            reserved: false,
+          };
+        }
 
-export const fetchMissions = (missions) => ({
-  type: GET_MISSION,
-  missions,
+        return thisMission;
+      }),
+    }),
+  },
+  extraReducers: {
+    [fetchMissions.fulfilled]: (state, action) => {
+      const value = state;
+      value.missions = action.payload.map((mission) => ({
+        mission_id: mission.mission_id,
+        mission_name: mission.mission_name,
+        description: mission.description,
+        reserved: false,
+      }));
+    },
+    [fetchMissions.rejected]: (state) => {
+      const value = state;
+      value.status = 'failed';
+    },
+  },
 });
 
-export const reserveMission = (id) => ({
-  type: RESERVE_MISSION,
-  payload: id,
-});
-
-export default function missionsReducer(state = initialState, action) {
-  switch (action.type) {
-    case GET_MISSION: {
-      const missionsArray = [];
-      action.missions.forEach((mission) => missionsArray.push(
-        {
-          mission_id: mission.mission_id,
-          mission_name: mission.mission_name,
-          description: mission.description,
-        },
-      ));
-      return [...missionsArray];
-    }
-    case RESERVE_MISSION: {
-      // console.log(`Inside Reserve rocket = ${state}`);
-      // localStorage.setItem('reserved', )
-      const missions = state;
-      const missionsReserved = missions.map((mission) => {
-        if (mission.mission_id === action.payload) return { ...mission, reserved: true };
-        return { ...mission };
-      });
-      return missionsReserved;
-    }
-
-    default:
-      return state;
-  }
-}
+export default missionsSlice.reducer;
+export const { reserveMission, cancelMission } = missionsSlice.actions;

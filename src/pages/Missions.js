@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchMissions } from '../redux/missions/missions';
-import retrieveMission from '../redux/missions/api/fetchMissions';
-import { reserveMission } from '../redux/missions/missions';
+// import retrieveMission from '../redux/missions/api/fetchMissions';
+import { reserveMission, fetchMissions } from '../redux/missions/missions';
 import '../styles/Missions.css';
 
 const Missions = () => {
@@ -11,12 +11,12 @@ const Missions = () => {
 
   useEffect(() => {
     if (!missionsArray.length) {
-      dispatch(retrieveMission());
+      dispatch(fetchMissions());
     }
   });
 
   const handleMissionJoin = (id) => {
-    localStorage.setItem('reserved', JSON.stringify({ id, reserved: true }));
+    // localStorage.setItem('reserved', JSON.stringify({ id, reserved: true }));
     dispatch(reserveMission(id));
   };
 
