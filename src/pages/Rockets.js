@@ -43,12 +43,8 @@ const Rockets = () => {
               {rocket.description}
             </p>
             <p>
-              reserved stat=
               {rocket.reserved}
             </p>
-            {rocket.reserved ? (
-              <h1>Reserved</h1>
-            ) : ''}
 
             {rocket.reserved
               ? (

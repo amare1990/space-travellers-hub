@@ -1,33 +1,64 @@
-// Constants
-const GET_ROCKET = 'space-travellers-hub/src/redux/rockets/fetchRockets';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+// import axios from 'axios';
 
-const initialState = [];
-// const sN = 0;
+export const fetchRockets = createAsyncThunk(
+  'rockets/fetchRockets',
+  async () => {
+    const response = await fetch('https://api.spacexdata.com/v3/rockets');
+    const rockets = await response.json();
+    return rockets;
+  },
+);
 
-// function that returns action
-
-export const fetchRockets = (rockets) => ({
-  type: GET_ROCKET,
-  payload: rockets,
+const rocketsSlice = createSlice({
+  name: 'rockets',
+  initialState: {
+    rockets: [],
+    status: 'idle',
+  },
+  reducers: {
+    reserveRocket: (state, action) => ({
+      ...state,
+      rockets: state.rockets.map((thisRocket) => {
+        if (thisRocket.rocket_id === action.payload) {
+          return {
+            ...thisRocket,
+            reserved: true,
+          };
+        }
+        return thisRocket;
+      }),
+    }),
+    cancelRocket: (state, action) => ({
+      ...state,
+      rockets: state.rockets.map((thisRocket) => {
+        if (thisRocket.rocket_id === action.payload) {
+          return {
+            ...thisRocket,
+            reserved: false,
+          };
+        }
+        return thisRocket;
+      }),
+    }),
+  },
+  extraReducers: {
+    [fetchRockets.fulfilled]: (state, action) => {
+      const value = state;
+      value.rockets = action.payload.map((rocket) => ({
+        rocket_id: rocket.rocket_id,
+        rocket_name: rocket.rocket_name,
+        flickr_images: rocket.flickr_images,
+        description: rocket.description,
+        reserved: false,
+      }));
+    },
+    [fetchRockets.rejected]: (state) => {
+      const value = state;
+      value.status = 'failed';
+    },
+  },
 });
 
-export default function rocketsReducer(state = initialState, action) {
-  switch (action.type) {
-    case GET_ROCKET: {
-      const rocketsArray = [];
-      action.payload.forEach((rocket) => rocketsArray.push(
-        {
-          flickr_images: rocket.flickr_images,
-          description: rocket.description,
-          rocket_id: rocket.rocket_id,
-          rocket_name: rocket.rocket_name,
-          rocket_type: rocket.rocket_type,
-        },
-      ));
-      return [...rocketsArray];
-    }
-
-    default:
-      return state;
-  }
-}
+export default rocketsSlice.reducer;
+export const { reserveRocket, cancelRocket } = rocketsSlice.actions;
