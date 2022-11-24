@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchRockets } from '../redux/rockets/rockets';
 
 const Profile = () => {
-  const rockets = useSelector((state) => state.rockets.rockets);
+  console.log();
   const dispatch = useDispatch();
   useEffect(() => {
     if (rockets.length === 0) {
@@ -11,17 +11,21 @@ const Profile = () => {
     }
   });
 
+  return (
     <div className="Profile">
       {
-      rockets.forEach((rocket) => (
-        rocket.rocket_id ? (
+      rockets.map((rocket) => (
+
+        rocket.reserved ? (
           <li key={rocket.rocket_id}>
-            rocket.rocket_name
+            {rocket.rocket_name}
           </li>
-        ) : "Yo didn't reserve any rocket yet"
+        ) : ''
+
       ))
         }
-    </div>;
+    </div>
+  );
 };
 
 export default Profile;
