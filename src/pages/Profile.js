@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchRockets } from '../redux/rockets/rockets';
 // import { fetchMissions } from '../redux/missions/missions';
 
+import '../styles/Profile.css';
+
 const Profile = () => {
   const rockets = useSelector((state) => state.rockets.rockets);
   /* const missions = useSelector((state) => state.missions.missions); */
@@ -20,7 +22,7 @@ const Profile = () => {
   }); */
 
   return (
-    <div className="Profile">
+    <div className="profile">
 
       {/* <div className="reserved-missions-wrapper">
         <h3 className="profile-title profile-title-mission">
@@ -44,18 +46,18 @@ const Profile = () => {
         <h3 className="profile-title profile-title-rocket">
           My Rockets
         </h3>
-        <ul className="reserved-profile reserved-profile-rocket ">
+        <div className="reserved-profile reserved-profile-rocket ">
           {
           rockets.map((rocket) => (
             rocket.reserved ? (
-              <li key={rocket.rocket_id} className="reserved-rocket-item">
+              <div key={rocket.rocket_id} className="reserved-item reserved-rocket-item">
                 {rocket.rocket_name}
-              </li>
+              </div>
             ) : ''
           ))
           }
 
-        </ul>
+        </div>
       </div>
 
     </div>
