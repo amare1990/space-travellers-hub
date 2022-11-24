@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRockets, reserveRocket, cancelRocket } from '../redux/rockets/rockets';
-// import retrieveRocket from '../redux/rockets/api/fetchRockets';
 import '../styles/Rocket.css';
-// import { fetchRockets } from './redux/rockets/rockets';
-/* import { cancelRocket } from '../redux/rockets/rockets';
- */
+
 const Rockets = () => {
   const rocketsArray = useSelector((state) => state.rockets.rockets);
+
   // console.log(rocketsArray[0].reserved);
   const dispatch = useDispatch();
 
@@ -17,9 +15,9 @@ const Rockets = () => {
     }
   });
 
-  /*  const handleRocketReservation = (id) => {
+  const handleRocketReservation = (id) => {
     dispatch(reserveRocket(id));
-  }; */
+  };
 
   return (
 
@@ -42,9 +40,6 @@ const Rockets = () => {
               )}
               {rocket.description}
             </p>
-            <p>
-              {rocket.reserved}
-            </p>
 
             {rocket.reserved
               ? (
@@ -65,7 +60,7 @@ const Rockets = () => {
                   Reserve Rocket
                 </button>
               )}
-
+ 
           </div>
 
         </li>

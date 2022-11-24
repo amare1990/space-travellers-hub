@@ -1,0 +1,67 @@
+.mission-card {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 90vw;
+  margin: auto;
+}
+
+.mission-card:nth-child(1n) {
+  background-color: white;
+}
+
+.mission-card:nth-child(2n) {
+  background-color: lightgray;
+}
+
+.missionName {
+  width: 10vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: solid 1px #444;
+}
+
+.missionName h3 {
+  text-align: left;
+  margin-left: 5px;
+}
+
+.missionDescription {
+  width: 60vw;
+  border: solid 1px #444;
+}
+
+.missionDescription p {
+  margin: 5px;
+}
+
+.missionMember {
+  width: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #444;
+}
+
+.missionMember button {
+  background-color: #666;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.missionButton {
+  width: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #444;
+}
+
+.missionButton button {
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+  height: 40px;
+}
