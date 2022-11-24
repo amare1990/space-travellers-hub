@@ -44,7 +44,10 @@
   border: none;
 }
 
-.reserved {
-  color: red;
-  font-size: 30px;
+.reserved-text {
+  color: #fff;
+  background-color: rgb(24, 157, 161);
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 0.5px 3px;
 }
