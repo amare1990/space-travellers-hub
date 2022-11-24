@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
 import { useDispatch } from 'react-redux';
 import NavBar from './pages/Nav';
 import Rockets from './pages/Rockets';
