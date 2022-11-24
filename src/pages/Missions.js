@@ -6,7 +6,7 @@ import { reserveMission, fetchMissions } from '../redux/missions/missions';
 import '../styles/Missions.css';
 
 const Missions = () => {
-  const missionsArray = useSelector((state) => state.missions);
+  const missionsArray = useSelector((state) => state.missions.missions);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,10 +15,10 @@ const Missions = () => {
     }
   });
 
-  const handleMissionJoin = (id) => {
+  /* const handleMissionJoin = (id) => {
     // localStorage.setItem('reserved', JSON.stringify({ id, reserved: true }));
     dispatch(reserveMission(id));
-  };
+  }; */
 
   return (
 
@@ -36,15 +36,27 @@ const Missions = () => {
         <li key={mission.mission_id} className="mission-card">
           <div className="missionName"><h3>{mission.mission_name}</h3></div>
           <div className="missionDescription"><p>{mission.description}</p></div>
-          <div className="missionMember"><button type="button">NOT A MEMBER</button></div>
-          <div className="missionButton">
+
+          {mission.reserved ? (<p className="missionMember">Active MEMBER</p>)
+            : (<p className="missionMember">NOT A MEMBER</p>)}
+
+          {mission.reserved ? (
             <button
               type="button"
-              onClick={() => handleMissionJoin(mission.mission_id)}
+              onClick={() => dispatch(reserveMission(mission.mission_id))}
             >
-              Join Mission
+              Leave Mission
             </button>
-          </div>
+          )
+            : (
+              <button
+                type="button"
+                onClick={() => dispatch(reserveMission(mission.mission_id))}
+              >
+                Join Mission
+              </button>
+            )}
+
         </li>
       ))}
 
