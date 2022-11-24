@@ -45,8 +45,15 @@
   border: solid 1px #444;
 }
 
-.missionMember button {
+.missionMemberNot {
   background-color: #666;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.missionMemberActive {
+  background-color: rgb(3, 201, 164);
   color: white;
   border: none;
   border-radius: 5px;
@@ -65,3 +72,9 @@
   border-radius: 5px;
   height: 40px;
 }
+
+.leavebutton {
+  color: red;
+  border: red solid;
+}
+
