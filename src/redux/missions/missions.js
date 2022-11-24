@@ -1,5 +1,6 @@
 // Constants
 const GET_MISSION = 'space-travellers-hub/src/redux/missions/fetchMissions';
+const RESERVE_MISSION = 'space-travellers-hub/src/redux/missions/reserveMission';
 
 const initialState = [];
 // const sN = 0;
@@ -9,6 +10,11 @@ const initialState = [];
 export const fetchMissions = (missions) => ({
   type: GET_MISSION,
   missions,
+});
+
+export const reserveMission = (id) => ({
+  type: RESERVE_MISSION,
+  payload: id,
 });
 
 export default function missionsReducer(state = initialState, action) {
@@ -23,6 +29,16 @@ export default function missionsReducer(state = initialState, action) {
         },
       ));
       return [...missionsArray];
+    }
+    case RESERVE_MISSION: {
+      // console.log(`Inside Reserve rocket = ${state}`);
+      // localStorage.setItem('reserved', )
+      const missions = state;
+      const missionsReserved = missions.map((mission) => {
+        if (mission.mission_id === action.payload) return { ...mission, reserved: true };
+        return { ...mission };
+      });
+      return missionsReserved;
     }
 
     default:
