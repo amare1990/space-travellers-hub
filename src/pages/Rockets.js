@@ -15,10 +15,6 @@ const Rockets = () => {
     }
   });
 
-  const handleRocketReservation = (id) => {
-    dispatch(reserveRocket(id));
-  };
-
   return (
 
     <div className="rockets-wrapper">
@@ -60,7 +56,7 @@ const Rockets = () => {
                   Reserve Rocket
                 </button>
               )}
- 
+
           </div>
 
         </li>
