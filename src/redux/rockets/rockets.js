@@ -19,10 +19,10 @@ export const reserveRocket = (id) => ({
 
 // Rocket reducer starts here
 export default function rocketsReducer(state = initialState, action) {
-  const rocketsArray = [];
   switch (action.type) {
     case GET_ROCKET: {
-      action.payload.forEach((rocket) => rocketsArray.push(
+      const rocketsArray = [];
+      action.payload.map((rocket) => rocketsArray.push(
         {
           flickr_images: rocket.flickr_images,
           description: rocket.description,
@@ -35,8 +35,14 @@ export default function rocketsReducer(state = initialState, action) {
       return [...rocketsArray];
     }
     case RESERVE_ROCKET: {
-      const newRocketsArray = rocketsArray.map((rocket) => {
-        if (rocket.rocket_id === action.payload) { return { ...rocket, reserved: true }; }
+      // console.log(`Inside Reserve rocket = ${state}`);
+      const rockets = state;
+      const newRocketsArray = rockets.map((rocket) => {
+        // console.log(`Inside Reserve rocket${rocketsArray}`);
+        if (rocket.rocket_id === action.payload) {
+          return { ...rocket, reserved: true };
+        }
+        return rocket;
       });
       return newRocketsArray;
     }

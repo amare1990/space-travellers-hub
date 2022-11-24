@@ -1,16 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import NavBar from './pages/Nav';
 import Rockets from './pages/Rockets';
 import Missions from './pages/Missions';
 import Profile from './pages/Profile';
-import retrieveRocket from './redux/rockets/api/fetchRockets';
+// import retrieveRocket from './redux/rockets/api/fetchRockets';
 
 function App() {
-  const dispatch = useDispatch();
-  dispatch(retrieveRocket());
+  /*  const dispatch = useDispatch();
+  dispatch(retrieveRocket()) */
 
   return (
     <div className="App">

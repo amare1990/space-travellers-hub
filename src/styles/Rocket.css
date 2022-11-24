@@ -43,3 +43,8 @@
   border-radius: 7px;
   border: none;
 }
+
+.reserved {
+  color:red;
+  font-size: 30px;
+}
