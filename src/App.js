@@ -5,11 +5,11 @@ import NavBar from './pages/Nav';
 import Rockets from './pages/Rockets';
 import Missions from './pages/Missions';
 import Profile from './pages/Profile';
-import retrieveRocket from './redux/rockets/api/fetchRockets';
+import { fetchRockets } from './redux/rockets/rockets';
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(retrieveRocket());
+  dispatch(fetchRockets);
 
   return (
     <div className="App">
