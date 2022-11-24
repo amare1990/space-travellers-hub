@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchMissions } from '../redux/missions/missions';
-import retrieveMission from '../redux/missions/api/fetchMissions';
+// import retrieveMission from '../redux/missions/api/fetchMissions';
+import { reserveMission, fetchMissions, cancelMission } from '../redux/missions/missions';
 import '../styles/Missions.css';
 
 const Missions = () => {
-  const missionsArray = useSelector((state) => state.missions);
+  const missionsArray = useSelector((state) => state.missions.missions);
   const dispatch = useDispatch();
-  dispatch(retrieveMission());
+
+  useEffect(() => {
+    if (!missionsArray.length) {
+      dispatch(fetchMissions());
+    }
+  });
+
+  /* const handleMissionJoin = (id) => {
+    // localStorage.setItem('reserved', JSON.stringify({ id, reserved: true }));
+    dispatch(reserveMission(id));
+  }; */
 
   return (
 
@@ -25,8 +36,29 @@ const Missions = () => {
         <li key={mission.mission_id} className="mission-card">
           <div className="missionName"><h3>{mission.mission_name}</h3></div>
           <div className="missionDescription"><p>{mission.description}</p></div>
-          <div className="missionMember"><button type="button">NOT A MEMBER</button></div>
-          <div className="missionButton"><button type="button">Join Mission</button></div>
+          <div className="missionMember">
+            {mission.reserved ? (<button type="button" className="missionMemberActive">Active MEMBER</button>)
+              : (<button type="button" className="missionMemberNot">NOT A MEMBER</button>)}
+          </div>
+          <div className="missionButton">
+            {mission.reserved ? (
+              <button
+                type="button"
+                className="leavebutton"
+                onClick={() => dispatch(cancelMission(mission.mission_id))}
+              >
+                Leave Mission
+              </button>
+            )
+              : (
+                <button
+                  type="button"
+                  onClick={() => dispatch(reserveMission(mission.mission_id))}
+                >
+                  Join Mission
+                </button>
+              )}
+          </div>
         </li>
       ))}
 
