@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { reserveRocket } from '../redux/rockets/rockets';
 import retrieveRocket from '../redux/rockets/api/fetchRockets';
 import '../styles/Rocket.css';
-// import { fetchRockets } from '../redux/rockets/rockets';
+// { fetchRockets } from '../redux/rockets/rockets';
 
 const Rockets = () => {
   const rocketsArray = useSelector((state) => state.rockets);
@@ -38,11 +38,13 @@ const Rockets = () => {
             <p className="rocket-description">
               {rocket.description}
             </p>
-            {rocket.reserved}
+            <p>
+              reserved stat=
+              {rocket.reserved}
+            </p>
             {rocket.reserved ? (
               <h1>Reserved</h1>
             ) : (<h1>Cancel</h1>)}
-            {console.log(rocket.reserved)}
 
             <button
               type="button"

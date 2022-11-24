@@ -36,16 +36,15 @@ export default function rocketsReducer(state = initialState, action) {
     }
     case RESERVE_ROCKET: {
       // console.log(`Inside Reserve rocket = ${state}`);
+      // localStorage.setItem('reserved', )
       const rockets = state;
-      const newRocketsArray = rockets.map((rocket) => {
-        // console.log(`Inside Reserve rocket${rocketsArray}`);
-        if (rocket.rocket_id === action.payload) {
-          return { ...rocket, reserved: true };
-        }
-        return rocket;
+      const rocketsReserved = rockets.map((rocket) => {
+        if (rocket.rocket_id === action.payload) return { ...rocket, reserved: true };
+        return { ...rocket };
       });
-      return newRocketsArray;
+      return rocketsReserved;
     }
+
     default:
       return state;
   }
