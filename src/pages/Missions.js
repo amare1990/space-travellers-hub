@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchMissions } from '../redux/missions/missions';
 // import retrieveMission from '../redux/missions/api/fetchMissions';
-import { reserveMission, fetchMissions } from '../redux/missions/missions';
+import { reserveMission, fetchMissions, cancelMission } from '../redux/missions/missions';
 import '../styles/Missions.css';
 
 const Missions = () => {
@@ -43,7 +43,7 @@ const Missions = () => {
           {mission.reserved ? (
             <button
               type="button"
-              onClick={() => dispatch(reserveMission(mission.mission_id))}
+              onClick={() => dispatch(cancelMission(mission.mission_id))}
             >
               Leave Mission
             </button>
