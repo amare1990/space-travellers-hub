@@ -17,6 +17,7 @@ const Rockets = () => {
   });
 
   const handleRocketReservation = (id) => {
+    localStorage.setItem('reserved', JSON.stringify({ id, reserved: true }));
     dispatch(reserveRocket(id));
   };
 
