@@ -5,3 +5,9 @@ exports[`Rockets Testing Render Rockets 1`] = `
   className="rockets-wrapper"
 />
 `;
+
+exports[`Testing if Rockets component renders correctly 1`] = `
+<div
+  className="rockets-wrapper"
+/>
+`;

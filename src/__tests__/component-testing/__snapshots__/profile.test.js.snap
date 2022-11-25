@@ -40,3 +40,22 @@ Array [
   ")",
 ]
 `;
+
+exports[`Testing if Profile component renders correctly 1`] = `
+<div
+  className="profile"
+>
+  <div
+    className="reserved-rockets-wrapper"
+  >
+    <h3
+      className="profile-title profile-title-rocket"
+    >
+      My Rockets
+    </h3>
+    <div
+      className="reserved-profile reserved-profile-rocket "
+    />
+  </div>
+</div>
+`;

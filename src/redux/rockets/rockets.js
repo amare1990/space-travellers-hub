@@ -13,7 +13,7 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState: {
     rockets: [],
-    status: 'valid',
+    status: 'Not Requested Yet',
   },
   reducers: {
     reserveRocket: (state, action) => ({
@@ -41,27 +41,10 @@ const rocketsSlice = createSlice({
       }),
     }),
   },
-  extraReducers: /* {
-    [fetchRockets.fulfilled]: (state, action) => {
-      const value = state;
-      value.rockets = action.payload.map((rocket) => ({
-        rocket_id: rocket.rocket_id,
-        rocket_name: rocket.rocket_name,
-        flickr_images: rocket.flickr_images,
-        description: rocket.description,
-        reserved: false,
-      }));
-    },
-    [fetchRockets.rejected]: (state) => {
-      const value = state;
-      value.status = 'failed';
-    },
-  }, */
-
-  (builder) => {
+  extraReducers: (builder) => {
     builder.addCase(fetchRockets.fulfilled, (state, action) => {
-      const value = state;
-      value.rockets = action.payload.map((rocket) => ({
+      const rocketsState = state;
+      rocketsState.rockets = action.payload.map((rocket) => ({
         rocket_id: rocket.rocket_id,
         rocket_name: rocket.rocket_name,
         flickr_images: rocket.flickr_images,
@@ -71,9 +54,13 @@ const rocketsSlice = createSlice({
     });
 
     builder.addCase(fetchRockets.rejected, (state) => {
-      const newState = state; newState.status = 'failed';
+      const failedState = state;
+      failedState.status = 'failed';
     });
-    builder.addCase(fetchRockets.pending, (_, action) => action.payload);
+    builder.addCase(fetchRockets.pending, (state) => {
+      const pendingState = state;
+      pendingState.status = 'Pending';
+    });
   },
 
 });
