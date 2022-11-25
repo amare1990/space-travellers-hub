@@ -4,8 +4,8 @@ export const fetchRockets = createAsyncThunk(
   'rockets/fetchRockets',
   async () => {
     const response = await fetch('https://api.spacexdata.com/v3/rockets');
-    const rockets = await response.json();
-    return rockets;
+    const responseJSON = await response.json();
+    return responseJSON;
   },
 );
 
@@ -13,31 +13,31 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState: {
     rockets: [],
-    status: 'idle',
+    status: 'valid',
   },
   reducers: {
     reserveRocket: (state, action) => ({
       ...state,
-      rockets: state.rockets.map((thisRocket) => {
-        if (thisRocket.rocket_id === action.payload) {
+      rockets: state.rockets.map((rocket) => {
+        if (rocket.rocket_id === action.payload) {
           return {
-            ...thisRocket,
+            ...rocket,
             reserved: true,
           };
         }
-        return thisRocket;
+        return rocket;
       }),
     }),
     cancelRocket: (state, action) => ({
       ...state,
-      rockets: state.rockets.map((thisRocket) => {
-        if (thisRocket.rocket_id === action.payload) {
+      rockets: state.rockets.map((rocket) => {
+        if (rocket.rocket_id === action.payload) {
           return {
-            ...thisRocket,
+            ...rocket,
             reserved: false,
           };
         }
-        return thisRocket;
+        return rocket;
       }),
     }),
   },
