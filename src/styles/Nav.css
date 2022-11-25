@@ -1,18 +1,38 @@
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 120px 0 200px;
 }
 
-.logo img {
+.logo-and-title {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
   width: 20%;
 }
 
-.ul-nav {
+.navbar {
   display: flex;
-  list-style-type: none;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
 }
 
 .link-item {
   margin-left: 30px;
+  width: 76px;
+}
+
+.item {
+  text-decoration: none;
+}
+
+.horizontal-bar {
+  width: 975px;
+  height: 1px;
+  background-color: #999;
+  margin: 20px 120px 0 200px;
 }
