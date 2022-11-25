@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchRockets, reserveRocket, cancelRocket } from '../redux/rockets/rockets';
 import '../styles/Rocket.css';
 
-const Rockets = () => {
+function Rockets() {
   const rocketsArray = useSelector((state) => state.rockets.rockets);
 
   // console.log(rocketsArray[0].reserved);
@@ -31,9 +31,12 @@ const Rockets = () => {
               {rocket.rocket_name}
             </p>
             <p className="rocket-description">
-              {rocket.reserved && (
-              <span className="reserved-text"> Reserved</span>
-              )}
+              {rocket.reserved ? (
+                <span className="reserved-text">
+                  Reserved
+                </span>
+              )
+                : ''}
               {rocket.description}
             </p>
 
@@ -63,6 +66,6 @@ const Rockets = () => {
       ))}
     </div>
   );
-};
+}
 
 export default Rockets;

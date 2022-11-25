@@ -4,8 +4,8 @@ export const fetchRockets = createAsyncThunk(
   'rockets/fetchRockets',
   async () => {
     const response = await fetch('https://api.spacexdata.com/v3/rockets');
-    const rockets = await response.json();
-    return rockets;
+    const responseJSON = await response.json();
+    return responseJSON;
   },
 );
 
@@ -13,50 +13,56 @@ const rocketsSlice = createSlice({
   name: 'rockets',
   initialState: {
     rockets: [],
-    status: 'idle',
+    status: 'Not Requested Yet',
   },
   reducers: {
     reserveRocket: (state, action) => ({
       ...state,
-      rockets: state.rockets.map((thisRocket) => {
-        if (thisRocket.rocket_id === action.payload) {
+      rockets: state.rockets.map((rocket) => {
+        if (rocket.rocket_id === action.payload) {
           return {
-            ...thisRocket,
+            ...rocket,
             reserved: true,
           };
         }
-        return thisRocket;
+        return rocket;
       }),
     }),
     cancelRocket: (state, action) => ({
       ...state,
-      rockets: state.rockets.map((thisRocket) => {
-        if (thisRocket.rocket_id === action.payload) {
+      rockets: state.rockets.map((rocket) => {
+        if (rocket.rocket_id === action.payload) {
           return {
-            ...thisRocket,
+            ...rocket,
             reserved: false,
           };
         }
-        return thisRocket;
+        return rocket;
       }),
     }),
   },
-  extraReducers: {
-    [fetchRockets.fulfilled]: (state, action) => {
-      const value = state;
-      value.rockets = action.payload.map((rocket) => ({
+  extraReducers: (builder) => {
+    builder.addCase(fetchRockets.fulfilled, (state, action) => {
+      const rocketsState = state;
+      rocketsState.rockets = action.payload.map((rocket) => ({
         rocket_id: rocket.rocket_id,
         rocket_name: rocket.rocket_name,
         flickr_images: rocket.flickr_images,
         description: rocket.description,
         reserved: false,
       }));
-    },
-    [fetchRockets.rejected]: (state) => {
-      const value = state;
-      value.status = 'failed';
-    },
+    });
+
+    builder.addCase(fetchRockets.rejected, (state) => {
+      const failedState = state;
+      failedState.status = 'failed';
+    });
+    builder.addCase(fetchRockets.pending, (state) => {
+      const pendingState = state;
+      pendingState.status = 'Pending';
+    });
   },
+
 });
 
 export default rocketsSlice.reducer;

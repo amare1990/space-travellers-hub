@@ -43,8 +43,8 @@ const missionsSlice = createSlice({
       }),
     }),
   },
-  extraReducers: {
-    [fetchMissions.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchMissions.fulfilled, (state, action) => {
       const value = state;
       value.missions = action.payload.map((mission) => ({
         mission_id: mission.mission_id,
@@ -52,12 +52,14 @@ const missionsSlice = createSlice({
         description: mission.description,
         reserved: false,
       }));
-    },
-    [fetchMissions.rejected]: (state) => {
-      const value = state;
-      value.status = 'failed';
-    },
+    });
+
+    builder.addCase(fetchMissions.rejected, (state) => {
+      const failedState = state; failedState.status = 'failed';
+    });
+    builder.addCase(fetchMissions.pending, (_, action) => action.payload);
   },
+
 });
 
 export default missionsSlice.reducer;
