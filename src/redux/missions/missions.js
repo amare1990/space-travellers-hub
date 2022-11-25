@@ -43,8 +43,8 @@ const missionsSlice = createSlice({
       }),
     }),
   },
-  extraReducers: {
-    [fetchMissions.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    /* [fetchMissions.fulfilled]: (state, action) => {
       const value = state;
       value.missions = action.payload.map((mission) => ({
         mission_id: mission.mission_id,
@@ -52,13 +52,29 @@ const missionsSlice = createSlice({
         description: mission.description,
         reserved: false,
       }));
-    },
-    [fetchMissions.rejected]: (state) => {
+    }, */
+
+    builder.addCase(fetchMissions.fulfilled, (state, action) => {
+      const value = state;
+      value.missions = action.payload.map((mission) => ({
+        mission_id: mission.mission_id,
+        mission_name: mission.mission_name,
+        description: mission.description,
+        reserved: false,
+      }));
+    });
+  },
+
+});
+
+/* builder.addCase(fetchMissions.rejected), (action) => action.payload);
+  }
+
+     [fetchMissions.rejected]: (state) => {
       const value = state;
       value.status = 'failed';
     },
-  },
-});
+  }, */
 
 export default missionsSlice.reducer;
 export const { reserveMission, cancelMission } = missionsSlice.actions;

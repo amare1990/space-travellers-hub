@@ -41,7 +41,7 @@ const rocketsSlice = createSlice({
       }),
     }),
   },
-  extraReducers: {
+  extraReducers: /* {
     [fetchRockets.fulfilled]: (state, action) => {
       const value = state;
       value.rockets = action.payload.map((rocket) => ({
@@ -56,7 +56,26 @@ const rocketsSlice = createSlice({
       const value = state;
       value.status = 'failed';
     },
+  }, */
+
+  (builder) => {
+    builder.addCase(fetchRockets.fulfilled, (state, action) => {
+      const value = state;
+      value.rockets = action.payload.map((rocket) => ({
+        rocket_id: rocket.rocket_id,
+        rocket_name: rocket.rocket_name,
+        flickr_images: rocket.flickr_images,
+        description: rocket.description,
+        reserved: false,
+      }));
+    });
+
+    builder.addCase(fetchRockets.rejected, (state) => {
+      const newState = state; newState.status = 'failed';
+    });
+    builder.addCase(fetchRockets.pending, (_, action) => action.payload);
   },
+
 });
 
 export default rocketsSlice.reducer;
