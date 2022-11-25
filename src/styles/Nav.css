@@ -1,0 +1,51 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 120px 0 200px;
+}
+
+.logo-and-title {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 20%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-decoration: none;
+}
+
+.link-item {
+  padding-left: 10px;
+  width: 76px;
+  text-decoration: none;
+}
+
+.item {
+  text-decoration: none;
+  color: rgb(26, 125, 182);
+}
+
+.active-link {
+  text-decoration: underline;
+  color: rgb(26, 125, 182);
+}
+
+.vertical-bar-links {
+  width: 2px;
+  height: 12px;
+  background-color: #777;
+}
+
+.horizontal-bar {
+  width: 975px;
+  height: 1px;
+  background-color: #999;
+  margin: 20px 120px 0 200px;
+}

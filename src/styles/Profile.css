@@ -1,0 +1,48 @@
+.profile {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 120px 0 200px;
+}
+
+.reserved-rockets-wrapper,
+.reserved-missions-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 40vw;
+  margin-left: 10px;
+}
+
+.reserved-profile {
+  list-style: none;
+  border-top: 1px solid #999;
+  border-right: 1px solid #999;
+  border-left: 1px solid #999;
+  width: 100%;
+}
+
+.reserved-item {
+  border-bottom: 1px solid #999;
+  padding: 7px 0 20px 10px;
+}
+
+.reserved-rocket-item {
+  width: 39vw;
+}
+
+.reserved-profile-rocket {
+  width: 100%;
+}
+
+.flag-text {
+  padding-top: 20px;
+  color: blue;
+}
+
+.no-joined-reserved {
+  padding-top: 10px;
+  font-size: 24px;
+  color: #459a;
+  text-align: center;
+}
