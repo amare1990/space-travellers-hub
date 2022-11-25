@@ -18,6 +18,18 @@ const Profile = () => {
     }
   });
 
+  const joinedMissions = missions.filter((mission) => mission.reserved);
+  let flagMission = false;
+  if (joinedMissions.length !== 0) {
+    flagMission = true;
+  }
+
+  const reservedRockets = rockets.filter((rocket) => rocket.reserved);
+  let flagRocket = false;
+  if (reservedRockets.length !== 0) {
+    flagRocket = true;
+  }
+
   return (
     <div className="profile">
 
@@ -25,6 +37,7 @@ const Profile = () => {
         <h3 className="profile-title profile-title-mission">
           My Missions
         </h3>
+
         <div className="reserved-profile reserved-profile-mission ">
           {
           missions.map((mission) => (
@@ -32,9 +45,13 @@ const Profile = () => {
               <div key={mission.mission_id} className="reserved-item reserved-mission-item">
                 {mission.mission_name}
               </div>
-            ) : 'No missions joined yet!'
+            ) : ''
           ))
           }
+
+          <p className="no-joined-reserved">
+            {flagMission ? '' : 'No Missions Selected Yet!'}
+          </p>
 
         </div>
       </div>
@@ -49,10 +66,16 @@ const Profile = () => {
             rocket.reserved ? (
               <div key={rocket.rocket_id} className="reserved-item reserved-rocket-item">
                 {rocket.rocket_name}
+
               </div>
-            ) : 'No rockets reserved yet'
+            ) : ''
           ))
           }
+
+          <p className="no-joined-reserved">
+            {flagRocket ? ''
+              : 'No Rockets Selected Yet!'}
+          </p>
 
         </div>
       </div>
