@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRockets } from '../redux/rockets/rockets';
-// import { fetchMissions } from '../redux/missions/missions';
+import { fetchMissions } from '../redux/missions/missions';
 
 import '../styles/Profile.css';
 
 const Profile = () => {
   const rockets = useSelector((state) => state.rockets.rockets);
-  /* const missions = useSelector((state) => state.missions.missions); */
+  const missions = useSelector((state) => state.missions.missions);
   const dispatch = useDispatch();
   useEffect(() => {
     if (rockets.length === 0) {
@@ -15,20 +15,20 @@ const Profile = () => {
     }
   });
 
-  /*  useEffect(()=> {
-    if(missions.length === 0) {
+  useEffect(() => {
+    if (missions.length === 0) {
       dispatch(fetchMissions());
     }
-  }); */
+  });
 
   return (
     <div className="profile">
 
-      {/* <div className="reserved-missions-wrapper">
+      <div className="reserved-missions-wrapper">
         <h3 className="profile-title profile-title-mission">
           My Missions
         </h3>
-        <ul className="reserved-profile reserved-profile-mission ">
+        <div className="reserved-profile reserved-profile-mission ">
           {
           missions.map((mission) => (
             mission.reserved ? (
@@ -39,8 +39,8 @@ const Profile = () => {
           ))
           }
 
-        </ul>
-      </div> */}
+        </div>
+      </div>
 
       <div className="reserved-rockets-wrapper">
         <h3 className="profile-title profile-title-rocket">
