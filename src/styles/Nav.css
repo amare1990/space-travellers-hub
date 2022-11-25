@@ -28,6 +28,7 @@ header {
 
 .item {
   text-decoration: none;
+  color: inherit;
 }
 
 .horizontal-bar {

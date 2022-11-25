@@ -29,9 +29,9 @@ const Profile = () => {
           {
           missions.map((mission) => (
             mission.reserved ? (
-              <li key={mission.mission_id} className="reserved-mission-item">
+              <div key={mission.mission_id} className="reserved-item reserved-mission-item">
                 {mission.mission_name}
-              </li>
+              </div>
             ) : ''
           ))
           }

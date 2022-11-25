@@ -4,7 +4,8 @@
   padding: 0 120px 0 200px;
 }
 
-.reserved-rockets-wrapper {
+.reserved-rockets-wrapper,
+.reserved-missions-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -32,19 +33,4 @@
 
 .reserved-profile-rocket {
   width: 100%;
-}
-
-.reserved-missions-wrapper {
-  width: 40vw;
-  height: auto;
-  margin-right: 10px;
-}
-
-.reserved-mission-item {
-  padding: 0%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding-left: 5px;
-  border-bottom: 1px solid #999;
 }
