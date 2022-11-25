@@ -34,3 +34,14 @@
 .reserved-profile-rocket {
   width: 100%;
 }
+
+.flag-wrapper {
+  border-bottom: 1px solid #999;
+}
+
+.no-joined-reserved {
+  padding-top: 10px;
+  font-size: 24px;
+  color: #459a;
+  text-align: center;
+}

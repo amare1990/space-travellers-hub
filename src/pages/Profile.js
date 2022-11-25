@@ -48,10 +48,11 @@ const Profile = () => {
             ) : ''
           ))
           }
-
-          <p className="no-joined-reserved">
-            {flagMission ? '' : 'No Missions Selected Yet!'}
-          </p>
+          <div className="flag-wrapper">
+            <p className="no-joined-reserved">
+              {flagMission ? '' : 'No Missions Selected Yet!'}
+            </p>
+          </div>
 
         </div>
       </div>
@@ -72,10 +73,12 @@ const Profile = () => {
           ))
           }
 
-          <p className="no-joined-reserved">
-            {flagRocket ? ''
-              : 'No Rockets Selected Yet!'}
-          </p>
+          <div className="flag-wrapper">
+            <p className="no-joined-reserved">
+              {flagRocket ? ''
+                : 'No Rockets Selected Yet!'}
+            </p>
+          </div>
 
         </div>
       </div>
