@@ -13,9 +13,6 @@ const Profile = () => {
     if (rockets.length === 0) {
       dispatch(fetchRockets());
     }
-  });
-
-  useEffect(() => {
     if (missions.length === 0) {
       dispatch(fetchMissions());
     }

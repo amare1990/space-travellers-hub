@@ -1,9 +1,12 @@
+.missions-wrapper {
+  margin: 20px 120px 0 200px;
+}
+
 .mission-card {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 90vw;
   margin: auto;
 }
 

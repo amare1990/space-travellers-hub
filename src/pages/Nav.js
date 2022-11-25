@@ -4,18 +4,15 @@ import planet from '../images/planet.png';
 import '../styles/Nav.css';
 
 const NavBar = () => (
-  <header className="header">
+  <>
+    <header className="header">
 
-    <div className="logo">
-      <img src={planet} alt="Logo" />
-    </div>
+      <div className="logo-and-title">
+        <img src={planet} alt="Logo" className="logo" />
+        <h1 className="title">Space Traveler`s Hub</h1>
+      </div>
 
-    <div className="title">
-      <h1>Space Traveler`s Hub</h1>
-    </div>
-
-    <div>
-      <ul className="ul-nav">
+      <ul className="navbar">
         <li className="link-item">
           <NavLink className="item" to="/">
             Rockets
@@ -32,7 +29,9 @@ const NavBar = () => (
           </NavLink>
         </li>
       </ul>
-    </div>
-  </header>
+    </header>
+    <div className="horizontal-bar" />
+  </>
+
 );
 export default NavBar;
