@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rockets Testing Render Rockets 1`] = `
-<div
-  className="rockets-wrapper"
-/>
-`;
-
 exports[`Testing if Rockets component renders correctly 1`] = `
 <div
   className="rockets-wrapper"

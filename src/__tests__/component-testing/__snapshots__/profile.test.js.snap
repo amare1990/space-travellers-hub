@@ -1,50 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render My profile 1`] = `
-<div
-  className="profile"
->
-  <div
-    className="reserved-rockets-wrapper"
-  >
-    <h3
-      className="profile-title profile-title-rocket"
-    >
-      My Rockets
-    </h3>
-    <div
-      className="reserved-profile reserved-profile-rocket "
-    />
-  </div>
-</div>
-`;
-
-exports[`Render Navbar 1`] = `
-Array [
-  <div
-    className="profile"
-  >
-    <div
-      className="reserved-rockets-wrapper"
-    >
-      <h3
-        className="profile-title profile-title-rocket"
-      >
-        My Rockets
-      </h3>
-      <div
-        className="reserved-profile reserved-profile-rocket "
-      />
-    </div>
-  </div>,
-  ")",
-]
-`;
-
 exports[`Testing if Profile component renders correctly 1`] = `
 <div
   className="profile"
 >
+  <div
+    className="reserved-missions-wrapper"
+  >
+    <h3
+      className="profile-title profile-title-mission"
+    >
+      My Missions
+    </h3>
+    <div
+      className="reserved-profile reserved-profile-mission "
+    />
+  </div>
   <div
     className="reserved-rockets-wrapper"
   >
