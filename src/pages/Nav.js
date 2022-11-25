@@ -14,17 +14,30 @@ const NavBar = () => (
 
       <ul className="navbar">
         <li className="link-item">
-          <NavLink className="item" to="/">
+          <NavLink
+            className={({ isActive }) => (
+              isActive ? 'active-link' : 'item')}
+            to="/"
+          >
             Rockets
           </NavLink>
         </li>
         <li className="link-item">
-          <NavLink className="item" to="/Missions">
+          <NavLink
+            to="/Missions"
+            className={({ isActive }) => (
+              isActive ? 'active-link' : 'item')}
+          >
             Missions
           </NavLink>
         </li>
+        <li className="vertical-bar-links" />
         <li className="link-item">
-          <NavLink className="item" to="/Profile">
+          <NavLink
+            to="/Profile"
+            className={({ isActive }) => (
+              isActive ? 'active-link' : 'item')}
+          >
             My Profile
           </NavLink>
         </li>

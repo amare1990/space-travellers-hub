@@ -22,13 +22,25 @@ header {
 }
 
 .link-item {
-  margin-left: 30px;
+  padding-left: 10px;
   width: 76px;
+  text-decoration: none;
 }
 
 .item {
   text-decoration: none;
-  color: inherit;
+  color: rgb(26, 125, 182);
+}
+
+.active-link {
+  text-decoration: underline;
+  color: rgb(26, 125, 182);
+}
+
+.vertical-bar-links {
+  width: 2px;
+  height: 12px;
+  background-color: #777;
 }
 
 .horizontal-bar {

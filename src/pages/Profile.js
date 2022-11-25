@@ -32,7 +32,7 @@ const Profile = () => {
               <div key={mission.mission_id} className="reserved-item reserved-mission-item">
                 {mission.mission_name}
               </div>
-            ) : ''
+            ) : 'No missions joined yet!'
           ))
           }
 
@@ -50,7 +50,7 @@ const Profile = () => {
               <div key={rocket.rocket_id} className="reserved-item reserved-rocket-item">
                 {rocket.rocket_name}
               </div>
-            ) : ''
+            ) : 'No rockets reserved yet'
           ))
           }
 
