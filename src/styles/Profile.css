@@ -35,8 +35,9 @@
   width: 100%;
 }
 
-.flag-wrapper {
-  border-bottom: 1px solid #999;
+.flag-text {
+  padding-top: 20px;
+  color: blue;
 }
 
 .no-joined-reserved {
