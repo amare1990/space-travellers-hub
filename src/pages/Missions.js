@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchMissions } from '../redux/missions/missions';
-// import retrieveMission from '../redux/missions/api/fetchMissions';
 import { reserveMission, fetchMissions, cancelMission } from '../redux/missions/missions';
 import '../styles/Missions.css';
 
@@ -14,11 +12,6 @@ const Missions = () => {
       dispatch(fetchMissions());
     }
   });
-
-  /* const handleMissionJoin = (id) => {
-    // localStorage.setItem('reserved', JSON.stringify({ id, reserved: true }));
-    dispatch(reserveMission(id));
-  }; */
 
   return (
 

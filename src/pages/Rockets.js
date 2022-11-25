@@ -5,8 +5,6 @@ import '../styles/Rocket.css';
 
 function Rockets() {
   const rocketsArray = useSelector((state) => state.rockets.rockets);
-
-  // console.log(rocketsArray[0].reserved);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,5 +1,7 @@
 header {
   display: flex;
+  align-items: center;
+  padding: 0 120px 0 200px;
 }
 
 .logo img {

@@ -14,7 +14,6 @@ const NavBar = () => (
       <h1>Space Traveler`s Hub</h1>
     </div>
 
-    <div>
       <ul className="ul-nav">
         <li className="link-item">
           <NavLink className="item" to="/">
@@ -32,7 +31,6 @@ const NavBar = () => (
           </NavLink>
         </li>
       </ul>
-    </div>
   </header>
 );
 export default NavBar;
