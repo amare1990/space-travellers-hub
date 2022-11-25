@@ -31,11 +31,7 @@
 - [❓ FAQ](#faq)
 - [📝 License](#license)
 
-<!-- PROJECT DESCRIPTION -->
-
 # 📖 Space Travellers Hub <a name="about-project"></a>
-
-> Describe your project in 1 or 2 sentences.
 
 **This is a web application developed using React library and Redux state management framework that allows users to display real data of the space traveller's data. Users can reserve rockets, cancel rocket reservation, join space traveller's mission and leave the mission. The web application also allows users to see their profile, the rockets they reserved and the missions they joined.**
 
@@ -75,7 +71,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Live Demo Link](https://stunning-crumble-1bf3cb.netlify.app/Profile)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
